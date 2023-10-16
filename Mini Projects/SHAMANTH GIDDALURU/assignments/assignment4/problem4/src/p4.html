@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/p4.css">
+</head>
+<body>
+    <form action="save">
+        <strong><label for="fname">Enter First Name : </label><input type="text" id="fname" name="fname"></strong><br><br>
+
+        <strong><label for="lname">Enter Last Name : </label><input type="text" id="lname" name="lname"></strong><br><br>
+
+        <strong><label for="address" id="address">Enter address : </label></strong>&nbsp;&nbsp;&nbsp;&nbsp;
+        <textarea name="address" id="address" cols="30" rows="5"></textarea><br><br>
+
+        <strong><label for="attended">programs attended : </label></strong>
+        <input type="checkbox" id="html" name="html" value="html"><label for="html">HTML</label>
+        <input type="checkbox" id="java" name="java" value="yes"><label for="java">java</label>
+        <input type="checkbox" id="oracle" name="oracle" value="oracle">
+        <label for="yes">oracle</label><br><br>
+
+        <strong><label for="stream">Select the stream you belong to : </label></strong>
+        <input type="radio" id="mech" name="branch" value="mech">
+        <label for="mech">Mech</label>
+        <input type="radio" id="eee" name="branch" value="eee">
+        <label for="stream">EEE</label>
+        <input type="radio" id="CS" name="branch" value="cs">
+        <label for="stream">CS</label><input type="radio" id="IT" name="branch" value="IT">
+        <label for="stream">IT</label><br><br>
+        <strong><label for="select">Which training program would you like to attend ?</label></strong>
+        <select name="program" id="program">
+            <option value="html">HTML5Advanced</option>
+            <option value="js">Javascript</option>
+            <option value="angular">angular</option>
+        </select><br><br>
+        <strong><label for="upload file">Upload Your Resume</label></strong>
+        <input type="file"><br><br>
+        <button type="button">exit</button>
+        <button type="button">save</button>
+        <button type="reset">reset</button>
+    </form>
+</body>
+</html>

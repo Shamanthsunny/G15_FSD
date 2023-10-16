@@ -1,0 +1,20 @@
+.container {
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+}
+.box {
+    background-color: azure;
+    margin: 15px;
+    padding: 25px;
+    width: 20px;
+    height: 20px;
+    align-content: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .container {
+        background-color: blue;
+    }
+}

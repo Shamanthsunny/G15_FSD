@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #currentTime {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #alarmTime {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Alarm Clock</h1>
+
+<div id="currentTime"></div>
+
+<label for="alarmTime">Set Alarm Time:</label>
+<input type="time" id="alarmTime" required>
+<br>
+<label for="audioFile">Choose Alarm Sound:</label>
+<input type="file" id="audioFile" accept=".mp3, .ogg, .wav">
+<button onclick="setAlarm()">Set Alarm</button>
+
+<audio id="alarmSound" preload="auto"></audio>
+
+<script>
+    function updateCurrentTime() {
+        const currentTimeElement = document.getElementById("currentTime");
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        currentTimeElement.textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+    }
+
+    function setAlarm() {
+        const alarmTimeInput = document.getElementById("alarmTime");
+        const alarmTime = alarmTimeInput.value;
+
+        if (!alarmTime) {
+            alert("Please set a valid alarm time.");
+            return;
+        }
+
+        const audioFileInput = document.getElementById("audioFile");
+        const audioFile = audioFileInput.files[0];
+
+        if (!audioFile) {
+            alert("Please choose an audio file for the alarm.");
+            return;
+        }
+
+        const now = new Date();
+        const alarmDate = new Date(now.toDateString() + ' ' + alarmTime);
+        const timeUntilAlarm = alarmDate - now;
+
+        if (timeUntilAlarm <= 0) {
+            alert("Please set a future alarm time.");
+            return;
+        }
+
+        const alarmSound = document.getElementById("alarmSound");
+        alarmSound.src = URL.createObjectURL(audioFile);
+
+        setTimeout(() => {
+            playAlarm();
+        }, timeUntilAlarm);
+    }
+
+    function playAlarm() {
+        const alarmSound = document.getElementById("alarmSound");
+        alarmSound.play();
+        alert("Time's up! Alarm is ringing.");
+    }
+
+    // Update current time every second
+    setInterval(updateCurrentTime, 1000);
+</script>
+
+</body>
+</html>
